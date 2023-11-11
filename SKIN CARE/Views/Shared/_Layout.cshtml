@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("ADMINI","","")</li>
+                        <li>@Html.ActionLink("PRODUKTET", "Index", "Produktets")</li>
+                        <li>@Html.ActionLink("MARKAT", "Index", "Markats")</li>
+                        <li>@Html.ActionLink("KATEGORITE", "Index", "Kategorites")</li>
+                    }
+                    else
+                    {
+                        @Html.ActionLink("SKIN CARE", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                        <li>@Html.ActionLink("KRYESORE", "Index", "Home")</li>
+                        <li>@Html.ActionLink("PRODUKTET", "Index", "Produktets")</li>
+                        <li>@Html.ActionLink("MARKAT", "Index", "Markats")</li>
+                    }
+
+                </ul>
+                @using (Html.BeginForm("Index", "Produktets", FormMethod.Get, new
+                {
+                    @class = "navbar-form navbar-left"
+                }))
+                {
+                    <div class="form-group">
+                        @Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Kerko produkt" })
+                    </div>
+                    <button type="submit" class="btn btn-default">Kerko</button>
+                }
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

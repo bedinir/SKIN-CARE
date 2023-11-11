@@ -1,0 +1,71 @@
+﻿@model SKIN_CARE.Models.Produktet
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Produktet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Emri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Imazhi)
+        </dt>
+
+        <dd>
+            <img width="250" height="250" src="~/Content/Imazhe/@Html.DisplayFor(model => model.Imazhi)" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pershkrimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pershkrimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cmimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cmimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategorite.EmriKategorise)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategorite.EmriKategorise)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Markat.EmriMarkes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Markat.EmriMarkes)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) <br />
+        @Html.ActionLink("Delete", "Delete", new { id = Model.ID })
+    }
+    <br />
+    @Html.ActionLink("Back to List", "Index")
+</p>

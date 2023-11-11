@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SKIN_CARE.Models.Produktet>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Krijoni nje produkt", "Create")
+
+    </p>
+}
+else
+{
+   
+    @Html.ActionLink("Cmimi me i madh", "Index", "Produktets", new { rendit = "desc" }, new { @class = "btn btn-link" })
+    @Html.ActionLink("Cmimi me i vogel", "Index", "Produktets", new { rendit = "asc" }, new { @class = "btn btn-link" })
+    @Html.ActionLink("All", "Index", "Produktets", new { rendit = "all" }, new { @class = "btn btn-link" })
+    <br /> <br />
+}
+<br />
+<div class="row" id="result">
+    @foreach (var produkt in Model)
+    {
+        <div class="col-md-4">
+            <h4>@Html.DisplayFor(produktModel => produkt.Emri)</h4>
+            <br />
+            <img width="200" height="250" src="~/Content/Imazhe/@Html.DisplayFor(produktModel => produkt.Imazhi)" />
+            <br />
+            <p> <a asp-action="Index" asp-route-sortOrder="@ViewData"> <b> @Html.DisplayFor(produktModel => produkt.Cmimi)</b></a></p>
+            <br />
+
+
+            @if (User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("EDIT", "Edit", "Produktets", new { id = produkt.ID }, new { @class = "btn btn-info" })
+                @Html.ActionLink("DELETE", "Delete", "Produktets", new { id = produkt.ID }, new { @class = "btn btn-info" })
+            }
+            else
+            {
+                @Html.ActionLink("Shto Ne Kart", "ShtoNeKart", "Produktets", new { id = produkt.ID }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Detaje", "Details", "Produktets", new { id = produkt.ID }, new { @class = "btn btn-info" })
+            }
+            <br /> <br />
+        </div>
+    }
+</div>
+

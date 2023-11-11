@@ -1,0 +1,77 @@
+﻿@using SKIN_CARE.Models;
+@{
+    ViewBag.Title = "ShtoNeKart";
+}
+
+<h2>ShtoNeKart (@ViewBag.Username)</h2>
+<table class="table">
+    <tr>
+        <th>Option</th>
+        <th>Emri</th>
+        <th>Imazhi</th>
+        <th>Cmimi</th>
+        <th>Sasia</th>
+        <th>Totali</th>
+    </tr>
+    @if (Request.IsAuthenticated)
+    {
+
+
+        foreach (Karta items in (List<Karta>)Session["kart"])
+        {
+            <tr>
+
+                <td>@Html.ActionLink("Fshi", "Remove", "Produktets", new { id = items.Produktet.ID }, new { @class = "btn btn-danger" })</td>
+                <td>@items.Produktet.Emri</td>
+                <td><img width="100" height="100" src="~/Content/Imazhe/@items.Produktet.Imazhi" /></td>
+                <td>@items.Produktet.Cmimi</td>
+                <td>@items.Sasia</td>
+                <td>@(items.Produktet.Cmimi * items.Sasia)</td>
+            </tr>
+        }
+
+
+        <tr>
+            <td align="right" colspan="5"><b>Totali</b></td>
+            <td>
+                @{
+                    List<Karta> kart = (List<Karta>)Session["kart"];
+                    var total = kart.Sum(items => items.Produktet.Cmimi * items.Sasia);
+                }
+                @total
+            </td>
+        </tr>
+    }
+    else
+    {
+
+        foreach (Karta items in (List<Karta>)Session["guest"])
+        {
+            <tr>
+
+                <td>@Html.ActionLink("Fshi", "Fshi", "Produktets", new { id = items.Produktet.ID }, new { @class = "btn btn-danger" })</td>
+                <td>@items.Produktet.Emri</td>
+                <td><img width="100" height="100" src="~/Content/Imazhe/@items.Produktet.Imazhi" /></td>
+                <td>@items.Produktet.Cmimi</td>
+                <td>@items.Sasia</td>
+                <td>@(items.Produktet.Cmimi * items.Sasia)</td>
+            </tr>
+        }
+
+
+        <tr>
+            <td align="right" colspan="5"><b>Totali</b></td>
+            <td>
+                @{
+                    List<Karta> kart = (List<Karta>)Session["guest"];
+                    var total = kart.Sum(items => items.Produktet.Cmimi * items.Sasia);
+                }
+                @total
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+@Html.ActionLink("Vazhdo Blerjet", "Index", "Produktes", new { @class = "btn btn-primary" })
+

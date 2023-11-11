@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>SKIN CARE</h1>
+    <p class="lead">Beauty is in the skin! Take care of it, oil it, clean it, scrub it, perfume it, and put on your best clothes, even if there is no special occasion, and you'll feel like a queen. If society is hard on you, fight back by pampering your skin. Skin is political. Otherwise why would the imams order us to hide it?</p>
+    <p>@Html.ActionLink("Produktet", "Index", "Produktets",null, new { @class = "btn btn-info"} )</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Kategorite</h2>
+        <img src="~/Content/Imazhe/beauty-products-1603140461.jpg" width="300" height="300" /> <br /> <br />
+        <p>@Html.ActionLink("Kategorite", "Index", "Kategorites", null, new { @class = "btn btn-info" })</p>
+
+    </div>
+    <div class="col-md-4">
+        <h2>Rutina</h2>
+        <img src="~/Content/Imazhe/10-step-korean-skin-care-routine-blog-banner-1.jpg" width="300" height="300" /> <br /> <br />
+    </div>
+    <div class="col-md-4">
+        <h2>Markat</h2>
+        <img src="~/Content/Imazhe/Markat.jpg" width="300" height="300"/>    <br /> <br />
+        <p>@Html.ActionLink("Markat", "Index", "Markats", null, new { @class = "btn btn-info" })</p>
+    </div>
+</div>

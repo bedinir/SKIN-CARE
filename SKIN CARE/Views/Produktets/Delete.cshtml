@@ -1,0 +1,72 @@
+﻿@model SKIN_CARE.Models.Produktet
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Produktet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Emri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Imazhi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imazhi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pershkrimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pershkrimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cmimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cmimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KategoriID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KategoriID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MarkaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarkaID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
