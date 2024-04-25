@@ -5,11 +5,6 @@ Welcome to the Skin Care Web Application! This is a comprehensive web applicatio
 ## Features
 
 - **User Registration and Authentication:** Users can register and authenticate using an email address and password combination through input fields on the registration form.
-- **Skin Type Identification:** The application helps users identify their skin type through a simple questionnaire.
-- **Routine Recommendation:** Based on the user's skin type and concerns, the application recommends a customized skincare routine.
-- **Product Recommendations:** Users can explore recommended skincare products tailored to their needs.
-- **Product Reviews:** Users can leave reviews for products they have tried, helping others make informed decisions.
-- **Community Forum:** A platform for users to ask questions, share tips, and discuss skincare-related topics.
 - **User Management:** Normal users can view products, categories, and brands. They can also change their passwords.
 - **Admin Panel:** Admins can manage products, categories, brands, and users through a dedicated admin panel. This includes functionalities such as inserting, deleting, and updating products, categories, and brands, as well as managing user accounts and moderating content. Admins can also change their passwords.
 
